@@ -1,0 +1,668 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="../css/JQuery/jquery-3.3.1.min.js"></script>
+
+    <link href="../css/W3Schools/w3.css" rel="stylesheet">
+    <link href="../css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/anim.css" rel="stylesheet">
+
+    <script href="../css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <title>Census Submission Form</title>
+    <style>
+        body {
+            background: radial-gradient(50% 176%, #253854 80%, #061922 100%);
+            background: rgba(51, 41, 43, 0.54);
+            background-image: url("../images/grunge_B&W.jpg");
+            background-blend-mode: soft-light;
+            background-attachment: scroll;
+            background-repeat: repeat-y;
+            background-origin: border-box;
+            background-position: center;
+            background-size: cover;
+            min-height: 100%;
+        }
+
+        .w3-form input {
+            width: 70%;
+            margin-bottom: 16px;
+        }
+
+        nav {
+            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.66);
+        }
+
+        .neat-format {
+            text-transform: capitalize;
+        }
+
+        .addTB a {
+            text-decoration: none;
+        }
+
+        .addTB a:hover {
+            color: deepskyblue;
+        }
+
+    </style>
+</head>
+
+<body bgcolor="gray">
+<nav class="w3-padding w3-blue-gray w3-top">
+    <div class="w3-left">
+        <span class="w3-xxlarge">Census Diagnostic Form</span>
+    </div>
+    <div class="w3-right">
+        <a href="#"><i class="fa fa-user-circle-o fa-3x"></i></a>
+    </div>
+</nav>
+<br><br><br>
+
+
+<section class="addTB w3-border-white w3-border w3-round-large" style="position: fixed; left: -3px;  top:50%">
+    <div class="w3-text-white w3-padding-small">
+        <a href="javascript:loadHHPersons(1);" class="w3-large"><i class="fa fa-plus"></i></a>
+        <hr>
+        <a href="javascript:loadHHPersons(-1);" class="w3-large"><i class="fa fa-refresh"></i></a>
+    </div>
+</section>
+
+<!--
+<section>
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center w3-red"><br>
+                <span onclick="document.getElementById('id01').style.display='none'"
+                      class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
+                      title="Close Modal">&times;</span>
+                <h3><span class="w3-xxlarge">You are about to add in a new Household:</span> <br>Household number <span>504</span>
+                </h3>
+            </div>
+
+            <form class="w3-container" action="javascript:loadHHForm('HCForm');" name="HCForm">
+                <div class="w3-section">
+                    <label><b>How many people are in the household? (0-15)</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" type="number" min="1" max="15" name="HHC"
+                           ID="HHC"
+                           placeholder="Household count">
+                    <button class="w3-btn-block w3-green w3-section w3-padding">Save</button>
+
+                </div>
+            </form>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id01').style.display='none'" type="button"
+                        class="w3-btn w3-red">Cancel
+                </button>
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
+
+        </div>
+    </div>
+</section>
+-->
+<div class="w3-row-padding" style="margin: 48px 48px">
+    <main class="w3-col l8 m8 w3-margin-0 w3-padding-0">
+        <div class="w3-blue w3-margin-bottom w3-container">
+            <h3 class="w3-margin-0">Diagnostic Form 1</h3>
+            <p class="w3-margin-0">Lorem ipsum dolor sit amet.</p>
+
+            <div class="w3-row">
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab1');">
+                    <div class="w3-col l2 m2 s2 w3-bottombar w3-hover-light-gray w3-padding tablink w3-border-red">
+                        <i class="fa fa-male"></i> Person Details
+                    </div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab2');">
+                    <div class="w3-col l2 m2 s2 w3-bottombar w3-hover-light-gray w3-padding tablink">
+                        <i class="fa fa-bar-chart"></i> Amenities
+                    </div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab3');">
+                    <div class="w3-col l2 m2 s2 s3 w3-bottombar w3-hover-light-gray w3-padding tablink">
+                        <i class="fa fa-exclamation-triangle w3-text-yellow"></i> Recent Deaths
+                    </div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab4');">
+                    <div class="w3-col l2 m2 s2 w3-bottombar w3-hover-light-gray w3-padding tablink">
+                        <i class="fa fa-home"></i> Household
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab5');">
+                    <div class="w3-col l2 m2 s2 w3-bottombar w3-hover-light-gray w3-padding tablink">
+                        <i class="fa fa-female"></i> Females Info
+                    </div>
+                </a>
+
+                <a href="javascript:void(0)" onclick="openTab(event, 'tab6');">
+                    <div class="w3-col l2 m2 s2 w3-bottombar w3-hover-light-gray w3-padding tablink">
+                        <i class="fa fa-home"></i> House Details
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <section class="w3-margin-bottom w3-container tab" id="tab1">
+            <div class="w3-accordion " id="accord">
+                <div>
+                    <button onclick="document.getElementById('demo1').classList.toggle('w3-show')"
+                            class="w3-text-white w3-btn-block w3-left-align w3-padding w3-large w3-transparent w3-border">
+                        <i class="fa fa-plus-circle w3-right w3-clear"></i> Person 1
+                    </button>
+                    <div id="demo1" class="w3-accordion-content w3-container w3-light-gray w3-animate-right">
+                        <form class="w3-form">
+                            <label class="w3-wide">Fullnames <span class="w3-text-red">*</span></label><br>
+                            <input class="w3-input w3-border neat-format" title="Name"
+                                   style="text-transform: capitalize"
+                                   type="text">
+
+                            <div class="w3-row-padding w3-padding-0" style="width: 83%">
+                                <div class="w3-col l8 m8 s8 w3-padding-0">
+                                    <label class="w3-wide">D.O.B <span class="w3-text-red">*</span></label><br>
+                                    <input class="w3-input w3-border" title="Name" type="date" style="width: 100%">
+                                </div>
+                                <div class="w3-col l3 m3 s3">
+                                    <label class="w3-wide">Age<span class="w3-text-red">*</span></label>
+                                    <input class="w3-input w3-border" title="Name" type="number" value="0">
+                                </div>
+                            </div>
+
+                            <label class="w3-wide" for="rel">Relationship <span class="w3-text-red">*</span></label><br>
+                            <select name="rel" id="rel" class=" w3-select w3-border w3-select" style="width: 70%">
+                                <option value="c_n">Son/Daughter</option>
+                                <option value="python">Grandchild</option>
+                                <option value="python">Brother/Sister</option>
+                                <option value="Java">Father/Mother</option>
+                                <option value="c_n">In Law</option>
+                                <option value="python">GrandParent</option>
+                                <option value="python">Non Relative(Visitor/Friends)</option>
+                            </select>
+                            <br><br>
+
+                            <label class="w3-wide">Sex <span class="w3-text-red">*</span></label><br>
+                            <label>
+                                <input class="w3-radio" type="radio" name="gender" value="Male" required>
+                            </label> Male
+                            <label>
+                                <input class="w3-radio" type="radio" name="gender" value="Female" required
+                                       onchange="openFemaleBar();">
+                            </label> Female
+
+                            <br>
+
+                            <label class="w3-wide">Tribe/Nationality <span class="w3-text-red">*</span></label><br>
+                            <input class="w3-input w3-border" type="text" title="Name">
+
+                            <label class="w3-wide">Religion<span class="w3-text-red">*</span></label><br>
+                            <select class="w3-select w3-border" style="width: 70%">
+                                <option value="">Catholics</option>
+                                <option value="">Protestants</option>
+                                <option value="">Other Christians</option>
+                                <option value="">Muslims</option>
+                                <option value="">Traditionalist</option>
+                                <option value="">Others</option>
+                                <option value="">No Religion</option>
+                            </select>
+                            <br><br>
+
+                            <label class="w3-wide" for="ms">Marital Status <span
+                                    class="w3-text-red">*</span></label><br>
+                            <select name="ms" id="ms" class="w3-border w3-select" style="width: 70%">
+                                <option value="Java">Single</option>
+                                <option value="c_n">Married(Monogous)</option>
+                                <option value="c_n">Married(Polygomous)</option>
+                                <option value="python">Divorce</option>
+                                <option value="python">Separated</option>
+                                <option value="python">Widow</option>
+                            </select>
+                            <br><br>
+
+                            <label class="w3-wide">Birthplace<span class="w3-text-red">*</span></label><br>
+                            <input class="w3-input w3-border" type="text" title="Name">
+
+                            <label class="w3-wide">Previous Residence<span class="w3-text-red">*</span></label><br>
+                            <input class="w3-input w3-border" type="text" title="Name">
+
+                            <label class="w3-wide">Duration of Residence<span class="w3-text-red">*</span></label><br>
+                            <input class="w3-input w3-border" type="date" title="Name">
+
+                            <label class="w3-wide">Orphanhood<span class="w3-text-red">*</span></label><br>
+                            <select class="w3-select w3-border" style="width: 70%">
+                                <option value="">Both</option>
+                                <option value="">Father only</option>
+                                <option value="">Mother Only</option>
+                                <option value="">None</option>
+                            </select>
+
+                            <br><br>
+                            <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">
+
+                        </form>
+
+                        <div class="">
+                            <a href="" class="w3-border w3-round-medium w3-dropdown-click">
+                                Additional Info for females
+                            </a>
+                            <div class="w3-padding-medium w3-container w3-row-padding" id="femDet">
+                                <article class="w3-col l4 m4 s4">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit. Velit provident, laboriosam iste qui aliquid ab saepe reiciendis. Enim velit
+                                    distinctio tempore quas optio beatae asperiores natus, deleniti necessitatibus,
+                                    doloribus fugit.
+                                </article>
+
+                                <div class="w3-col l8 m8 s8">
+                                    <form class="w3-form w3-medium" style="border-style: inset; border-right: 5px;">
+                                        <div class="w3-text-yellow">
+                                            <h5>Information regarding Females</h5>
+                                            <p class="w3-small"><span class="w3-tag">NB:</span> The below details are
+                                                only for <span
+                                                        class="w3-tag w3-text-red">Females</span>
+                                                aged 12 years and above in the household </p>
+                                        </div>
+
+                                        <br>
+                                        <label class="w3-widex">Live births Count<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="number" value="0" min="0" max="50">
+
+                                        <label class="w3-widex">Children Born Alive<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="number" value="0" min="0" max="50">
+
+                                        <label class="w3-widex">Children living in the Household<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="number" value="0" min="0" max="50">
+
+                                        <label class="w3-widex">Children Living Elsewhere<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="number" value="0" min="0" max="50">
+
+                                        <label class="w3-widex">Dead Children<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="number" value="0" min="0" max="50">
+
+                                        <label class="w3-widex">Last Born Child<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="date">
+
+                                        <label class="w3-widex">Birth Notification<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <label>
+                                            <input class="w3-radio" type="radio" name="gender" value="yes" required>
+                                        </label> Yes
+                                        <label>
+                                            <input class="w3-radio" type="radio" name="gender" value="no" required>
+                                        </label> No
+
+                                        <br><br>
+                                        <label class="w3-widex">Sex of Child<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <label>
+                                            <input class="w3-radio" type="radio" name="gender" value="Male" required>
+                                        </label> Male
+                                        <label>
+                                            <input class="w3-radio" type="radio" name="gender" value="Female" required>
+                                        </label> Female
+                                        <br>
+                                        <label class="w3-widex">Survival Status<span
+                                                class="w3-text-red">*</span></label><br>
+                                        <input class="w3-input w3-border" type="text">
+
+                                        <input type="submit" class="w3-btn-block w3-green" value="Save" name="">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="">
+                            <a href="" class="w3-border w3-round-medium w3-dropdown-click">
+                                Do you have any disability?
+                            </a>
+
+                            <div class="w3-padding-medium w3-container">
+                                <label class="w3-wide">Type of diability<span class="w3-text-red">*</span></label><br>
+
+                                <select class="w3-select w3-border" style="width: 70%">
+
+                                    <option value="">Visual impairment</option>
+                                    <option value="">Hearing impairement</option>
+                                    <option value="">Physical Disability</option>
+                                    <option value="">Mental Disability</option>
+                                    <option value="">Self care difficulties</option>
+                                    <option value="">Speech impairment</option>
+                                    <option value="">Other disabilities(lbinism,
+                                        epilepsy, autism, or chronic)
+                                    </option>
+                                </select>
+
+                                <br><br>
+                                <label class="w3-wide">Type of diability<span class="w3-text-red">*</span></label><br>
+                                <textarea class="w3-input w3-border" style="width: 70%;resize: none;"></textarea>
+                            </div>
+
+                            <div class="w3-padding-medium w3-container">
+                                <label class="w3-wide"> School /Le
+                                    arning Institution Attendance <span class="w3-text-red">*</span></label><br>
+                                <select class="w3-select w3-border" style="width: 70%">
+
+                                    <option value="">Attending this year</option>
+                                    <option value="">Left School</option>
+                                    <option value="">Never schooled</option>
+                                    <option value="">Unkown</option>
+                                </select>
+
+                                <label class="w3-wide"> Highest Standard/Form/Level of Education Reached <span
+                                        class="w3-text-red">*</span></label><br>
+                                <input class="w3-input">
+                                <label class="w3-wide"> Highest Standard/F
+                                    orm/Level of Education Completed <span class="w3-text-red">*</span></label><br>
+                                <input class="w3-input">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+            </div>
+
+        </section>
+
+        <section class="w3-margin-bottom w3-container tab" style="display: none;" id="tab2">
+            <form class="w3-form w3-light-gray">
+                <h5>Information regarding ICT</h5>
+                <p class="w3-small"><span class="w3-tag">NB:</span> Answers to the ICT questions may be provided by the
+                    head of the household or any other responsible member of the household. </p>
+
+                <br>
+                <label class="w3-wide">Accessiblity(Mode of Access)<span class="w3-text-red">*</span></label><br>
+                <label>
+                    <input type="checkbox" class="w3-check"> Radio
+                </label>
+
+                <label>
+                    <input type="checkbox" class="w3-check"> Television
+                </label>
+
+                <label>
+                    <input type="checkbox" class="w3-check"> Smartphone
+                </label>
+
+                <label>
+                    <input type="checkbox" class="w3-check"> Computer
+                </label>
+
+                <label>
+                    <input type="checkbox" class="w3-check"> Others
+                </label>
+
+                <br> <br>
+                <label class="w3-wide">Internet Access Frequency <span class="w3-text-red">*</span></label><br>
+                <select class="w3-select w3-border w3-transparent" style="width: 70%">
+                    <option value="">Daily</option>
+                    <option value="">Weekly</option>
+                    <option value="">Monthly</option>
+                    <option value="">Yearly</option>
+                </select>
+
+                <br><br>
+                <label class="w3-wide">Place of Access<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">
+
+            </form>
+            <br>
+            <form class="w3-form w3-light-gray">
+                <h5>Information regarding Livestock</h5>
+
+                <br>
+                <label class="w3-wide">Types of Livestock<span class="w3-text-red">*</span></label><br>
+                <textarea class="w3-input w3-border" style="width: 70%"></textarea>
+                <br>
+
+                <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">
+
+            </form>
+        </section>
+
+        <section class="w3-margin-bottom w3-container tab" style="display: none;" id="tab3">
+            <form class="w3-form w3-light-gray">
+                <label class="w3-wide">Death HH Member<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="number">
+
+                <label class="w3-wide">Death Order <span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="number">
+
+                <label class="w3-wide">Death Notification<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Age<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Sex <span class="w3-text-red">*</span></label><br>
+                <select class="w3-select w3-border w3-transparent" style="width: 70%">
+                    <option value="">Tenant</option>
+                    <option value="">Owner</option>
+                </select>
+                <br><br>
+
+                <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">
+
+            </form>
+        </section>
+
+        <section class="w3-margin-bottom w3-container tab" style="display: none;" id="tab4">
+            <form class="w3-form w3-light-gray">
+                <p class="w3-small">NB: The below details are only for the <span class="w3-tag w3-pale-red w3-text-red">main</span>
+                    building</p>
+                <label class="w3-wide">Dwelling Units <span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="number">
+
+                <label class="w3-wide">Habitable Rooms <span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="number">
+
+                <label class="w3-wide">Tenure status <span class="w3-text-red">*</span></label><br>
+                <select class="w3-select w3-border w3-transparent" style="width: 70%">
+                    <option value="">Tenant</option>
+                    <option value="">Owner</option>
+                </select>
+                <br>
+
+                <label class="w3-wide">Roof Construction Material<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Wall Contruction Material<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Floor Construction Material<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Mode of Human Waste Disposal<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Cooking Fuel<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <label class="w3-wide">Lighting Fuel<span class="w3-text-red">*</span></label><br>
+                <input class="w3-input w3-border" type="text">
+
+                <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">
+
+            </form>
+        </section>
+
+
+        <section class="w3-margin-bottom w3-container tab" style="display: none;" id="tab5">
+
+        </section>
+
+
+        <div id="openHousehold" class="w3-modal">
+            <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 600px">
+                <div class="w3-center w3-pale-red w3-xxlarge neat-format">
+                    House hold number <span id="houseNo">347</span>
+                </div>
+                <div class="w3-padding-large">
+                    <label>Number of persons in the household</label>
+                    <input type="number" class="w3-input w3-border">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <aside class="w3-col l4 m4 w3-padding-medium">
+        <section class="w3-white w3-container w3-margin-bottom w3-row w3-padding">
+            <div class="w3-quarter" style="margin-top: 32px">
+                <i class="fa fa-user-circle-o fa-4x w3-text-gray"></i>
+            </div>
+            <div class="w3-threequarter">
+                <h3>Co-Worker's Name</h3>
+                <p class="">ID: 32436932</p>
+                <button class="w3-btn w3-red">Logout</button>
+            </div>
+        </section>
+
+        <section class="w3-white w3-container w3-margin-bottom">
+            <h4>Other Services</h4>
+            <ul class="w3-ul">
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+            </ul>
+        </section>
+
+        <section class="w3-white w3-container w3-margin-bottom">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores inventore perspiciatis repellat! Ab
+                accusamus adipisci aspernatur atque beatae cumque doloribus enim error itaque nam nobis obcaecati,
+                saepe, vero, voluptas voluptatibus!</p>
+        </section>
+    </aside>
+</div>
+
+</body>
+<script type="text/javascript" src="../scripts/main.js"></script>
+
+<script>
+
+    var defPerson = 1;
+
+    function loadHHPersons(p) {
+        defPerson = defPerson + p;
+
+        if (p < 1)
+            defPerson = 1;
+
+        var out;
+        out = '<div>\n' +
+            '                    <button onclick="document.getElementById(\'demo' + defPerson + '\').classList.toggle(\'w3-show\')" class="w3-text-white w3-btn-block w3-left-align w3-padding w3-large w3-transparent w3-border w3-hover-blue">\n' +
+            '                        +  Person ' + defPerson + '\n' +
+            '                    </button>\n' +
+            '                    <div id="demo' + defPerson + '" class="w3-light-gray w3-accordion-content w3-container w3-animate-right">\n' +
+            '                        <form class="w3-form">\n' +
+            '                            <label class="w3-wide">Fullnames <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border neat-format" title="Name" style="text-transform: capitalize"\n' +
+            '                                   type="text">\n' +
+            '\n' +
+            '                            <label class="w3-wide">Age <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="number" title="Name" max="150" min="3">\n' +
+            '\n' +
+            '                            <label class="w3-wide" for="rel">Relationship <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <select name="rel" id="rel" class=" w3-gray w3-border w3-select" style="width: 70%">\n' +
+            '                                <option value="c_n">Son/Daughter</option>\n' +
+            '                                <option value="python">Grandchild</option>\n' +
+            '                                <option value="python">Brother/Sister</option>\n' +
+            '                                <option value="Java">Father/Mother</option>\n' +
+            '                                <option value="c_n">In Law</option>\n' +
+            '                                <option value="python">GrandParent</option>\n' +
+            '                                <option value="python">Non Relative(Visitor/Friends)</option>\n' +
+            '                            </select>\n' +
+            '                            <br><br>\n' +
+            '\n' +
+            '                            <label class="w3-wide">Sex <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <label>\n' +
+            '                                <input class="w3-radio" type="radio" name="gender" value="Male" required>\n' +
+            '                            </label> Male\n' +
+            '                            <label>\n' +
+            '                                <input class="w3-radio" type="radio" name="gender" value="Female" required>\n' +
+            '                            </label> Female\n' +
+            '                            <br>\n' +
+            '\n' +
+            '                            <label class="w3-wide">Tribe/Nationality <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="text" title="Name">\n' +
+            '\n' +
+            '                            <label class="w3-wide">Religion<span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="text" title="Name">\n' +
+            '\n' +
+            '                            <label class="w3-wide" for="ms">Marital Status <span class="w3-text-red">*</span></label><br>\n' +
+            '                            <select name="ms" id="ms" class=" w3-gray w3-border w3-select" style="width: 70%">\n' +
+            '                                <option value="Java">Single</option>\n' +
+            '                                <option value="c_n">Married</option>\n' +
+            '                                <option value="python">Divorce</option>\n' +
+            '                                <option value="python">Widow</option>\n' +
+            '                            </select>\n' +
+            '                            <br><br>\n' +
+            '\n' +
+            '                            <label class="w3-wide">Birthplace<span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="text" title="Name">\n' +
+            '\n' +
+            '                            <label class="w3-wide">Previous Residence<span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="text" title="Name">\n' +
+            '\n' +
+            '                            <label class="w3-wide">Duration of Residence<span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="date" title="Name">\n' +
+            '\n' +
+            '                            <label class="w3-wide">Orphanhood<span class="w3-text-red">*</span></label><br>\n' +
+            '                            <input class="w3-input w3-border" type="text" title="Name">\n' +
+            '\n' +
+            '                            <input type="submit" class="w3-btn-block w3-green" value="Save" name="Save">\n' +
+            '\n' +
+            '                        </form>\n' +
+            '                    </div>\n' +
+            '                </div><br>';
+
+        var x = document.getElementById('accord');
+        out = out.replace("undefined", "");
+
+        if (p > 0) {
+            x.innerHTML += out;
+        }
+        else {
+            defPerson = 1;
+            x.innerHTML = out;
+        }
+    }
+
+
+    function openTab(evt, tabName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.firstElementChild.className += " w3-border-red";
+    }
+
+    function openFemaleBar() {
+        var x = document.getElementById("femDet");
+        if (x.className.indexOf("w3-show") == -1)
+            x.className += " w3-show";
+        else
+            x.className = x.className.replace(" w3-show", "");
+    }
+</script>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/W3Schools/w3.css" rel="stylesheet">
+    <link href="css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/anim.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+
+<body bgcolor="#db7093">
+<aside id="accountSideNav" class="sidmenav  w3-round-large w3-text-light-grey">
+        <div>
+            <i class="fa fa-close fa-2x w3-text-white w3-hover-text-blue-gray" onclick="openSideNav();document.getElementById('_topSideText').classList.toggle('w3-opacity-max');" style="cursor: pointer;"></i>
+        </div>
+        <div id="sideNav1" class="w3-hide">
+            <br>
+            <div class="w3-center">
+                <i class="fa fa-user-circle-o fa-5x w3-text-shadow w3-text-blue-gray w3-opacityd" style="font-size: 128px"></i>
+            </div>
+            <h2 class="capitalize w3-text-blue-gray  w3-xxxlarge w3-text-shadow-white w3-padding-4 w3-center"
+                style="font-weight: 700; ">census
+                <span class="w3-jumbo">staff</span> login</h2>
+
+            <form class="w3-container w3-padding-xxlarge" action="javascript:userLogin('lgForm');" name="lgForm" autocomplete="off.">
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-user-circle w3-text-black"></i> Username</label>
+                <input class="w3-input w3-margin-bottom w3-light-gray" type="text" placeholder="Enter Username"
+                       name="userName" required>
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-lock w3-text-black"></i> Password</label>
+                <input class="w3-input w3-light-gray" type="password" placeholder="Enter Password" name="psw" required>
+					
+				<div class="w3-center w3-hide w3-animate-zoom w3-padding-4" id="_loginError">
+				 	<label class="w3-large w3-text-amber w3-text-shadow-white"><i class="fa fa-bomb fa-2x w3-text-red w3-text-shadow"></i>Failed: Either your username or password is incorrect</label>
+				
+				</div>
+                <button class="w3-btn-block w3-wide w3-round-xlarge w3-section w3-padding w3-border-blue-gray w3-blue-gray w3-border w3-hover-opacity w3-text-white w3-hover-"
+                        type="submit"><b>LOG IN</b> <i class="fa fa-sign-in"></i>
+                </button>
+                <input class="w3-check w3-margin-top w3-margin-left" type="checkbox" checked><span class="w3-text-shadow-white" style="color: #546c78"> Remember me</span>
+            </form>
+            <div class="w3-border-top w3-padding-4">
+
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
+        </div>
+	
+	
+	<div id="sideNav2" class="w3-show">
+            <br>
+            <div class="w3-center">
+                <i class="fa fa-user-circle-o fa-5x w3-text-shadow w3-text-blue-gray w3-opacityd" style="font-size: 128px"></i>
+            </div>
+            <h2 class="capitalize w3-text-blue-gray  w3-xxxlarge w3-text-shadow-white w3-padding-4 w3-center"
+                style="font-weight: 700; ">census
+                <span class="w3-jumbo">Reset</span> Pass</h2>
+
+            <form class="w3-container w3-padding-xxlarge" action="javascript:userForgotPass('fgForm');" name="fgForm" autocomplete="off.">
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-user-circle w3-text-black"></i> Enter your Username (or Email)</label>
+                <input class="w3-input w3-margin-bottom w3-light-gray" type="text" placeholder="Enter Username"
+                       name="userName" required>
+           
+				<div class="w3-center w3-hidde w3-animate-zoom w3-padding-4" id="_resetError">
+				 	<label class="w3-large w3-text-amber "><i class="fa fa-ban fa-2x w3-text-red w3-text-shadow"></i> Failed: Username or Email is not in the system</label>
+				
+				</div>
+                <button class="w3-btn-block w3-wide w3-round-xlarge w3-section w3-padding w3-border-blue-gray w3-blue-gray w3-border w3-hover-opacity w3-text-white w3-hover-"
+                        type="submit"><b>Retrieve Password</b> <i class="fa fa-search"></i>
+                </button>
+				
+				
+				<div class="w3-animate-opacity w3-padding-4">
+					<label class="w3-large">Done: Your password is: <span id="passHolder"></span></label></div>
+           
+            </form>
+            <div class="w3-border-top w3-padding-4">
+
+                <span class="w3-right w3-padding w3-hide-small">Back to <a href="#">Login?</a></span>
+            </div>
+        </div>
+
+
+        <section class="w3-right-align w3-hide w3-padding-small" id="sideNav2">
+
+            <form class="w3-form w3-display-topright w3-center w3-padding-12" action="Phps/logout.php" method="get">
+                <button type="submit"
+                        class="w3-btn w3-transparent w3-medium w3-hover-blue-gray w3-round-xlarge w3-black">
+                    <i class="fa fa-sign-out"><br>Sign Out</i></button>
+            </form>
+
+            <div class="w3-center">
+                <img src="../images/Tamzin_merchant2.jpg" class="w3-circle w3-border w3-border-black" width="136px"
+                     height="136px"
+                     style="max-widdth: 100%; heighdt: auto;">
+            </div>
+
+            <h4 class="w3-text-blue-gray w3-text-shadow-white w3-xxlarge" style="text-transform: capitalize;"><b>Welcome to your census account</b></h4>
+
+            <div class="w3-row-padding w3-text-white w3-text-shadow">
+                <ul class="w3-half">
+                    <li><a href="#"><h5><i class="fa fa-black-tie w3-medium"></i> Work ID:</h5>
+                        <p class="w3-small" id="userData[0]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-id-card w3-medium"></i> National ID:</h5>
+                        <p class="w3-small" id="userData[1]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-odnoklassniki w3-medium"></i> Full Names:</h5>
+                        <p class="w3-small" id="userData[2]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-at w3-medium"></i> Email @ddress:</h5>
+                        <p class="w3-small" id="userData[3]">NULL</p></a></li>
+                </ul>
+                <ul class="w3-half">
+                    <li><a href="#"><h5><i class="fa fa-area-chart w3-medium"></i> Area of Operation:</h5>
+                        <p class="w3-small" id="userData[4]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="w3-medium fa fa-calendar"></i> Days Left:</h5>
+                        <p class="w3-small" id="userData[5]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="w3-medium fa fa-venus-mars"></i> Gender:</h5>
+                        <p class="w3-small" id="userData[6]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-child w3-medium"></i> Age:</h5>
+                        <p class="w3-small" id="userData[7]">NULL</p></a></li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="w3-right-align">
+                <form action="Page/Forms_Page.php" method="post" name="_FormsPage">
+                    <input type="text" value="ID NOT GENERATED" id="_hhIDGenerator" name="_hhGenId" class="w3-hide">
+                    <button type="submit"
+                            class="w3-padding-12 w3-btn w3-round-jumbo w3-medium w3-card-4 w3-amber w3-hover-opacity w3-blue-gray"><i
+                            class="w3-mediumm w3-text-white fa fa-plus-circle"></i> House Hold
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+    </aside>
+</body>
+</html>
+<script>
+    function formatDis(arg) {
+        var x,i;
+        x=document.getElementsByClassName("signBtn");
+
+        if(arg) {
+           for(i=0;i<x.length;i++){
+               x[i].className="fa fa-connectdevelop signBtn";
+           }
+       }
+       else{
+            for(i=0;i<x.length;i++){
+                x[i].className="fa fa-sign-in signBtn";
+            }
+        }
+    }
+
+</script>

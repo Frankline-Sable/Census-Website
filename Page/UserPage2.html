@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="../css/JQuery/jquery-3.3.1.min.js"></script>
+
+    <link href="../css/W3Schools/w3.css" rel="stylesheet">
+    <link href="../css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/anim.css" rel="stylesheet">
+
+    <script href="../css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <title>Census Submission Form</title>
+    <style>
+        body {
+            background: radial-gradient(50% 176%, #253854 80%, #061922 100%);
+            background: rgba(51, 41, 43, 0.54);
+            background-image: url("../images/grunge_B&W.jpg");
+            background-blend-mode: soft-light;
+            background-attachment: scroll;
+            background-repeat: repeat-y;
+            background-origin: border-box;
+            background-position: center;
+            background-size: cover;
+            min-height: 100%;
+        }
+        .w3-form input{
+            width: 70%;
+            margin-bottom: 16px;
+        }
+
+        nav{
+            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.66);
+        }
+        .neat-format{
+            text-transform: capitalize;
+        }
+
+    </style>
+</head>
+
+<body bgcolor="gray">
+<nav class="w3-padding w3-blue-gray w3-top">
+    <div class="w3-left">
+        <span class="w3-xxlarge">Census Diagnostic Form</span>
+    </div>
+    <div class="w3-right">
+        <a href="#"><i class="fa fa-user-circle-o fa-3x"></i></a>
+    </div>
+</nav>
+<br><br><br>
+
+//Welcome;
+
+<section>
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center w3-red"><br>
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright" title="Close Modal">&times;</span>
+                <h3><span class="w3-xxlarge">You are about to add in a new Household:</span> <br>Household number <span>504</span></h3>
+            </div>
+
+            <form class="w3-container" action="http://www.w3schools.com/w3css/form.asp">
+                <div class="w3-section">
+                    <label><b>How many people are in the household? (0-15)</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" type="number" min="1" max="15" placeholder="Household count">
+                    <button class="w3-btn-block w3-green w3-section w3-padding">Save</button>
+
+                </div>
+            </form>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-btn w3-red">Cancel</button>
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="w3-row-padding" style="margin: 48px 48px">
+    <main class="w3-col l8 m8 w3-margin-0 w3-padding-0">
+        <div class="w3-blue w3-margin-bottom w3-container">
+            <h3 class="w3-margin-0">Diagnostic Form 1</h3>
+            <p class="w3-margin-0">Lorem ipsum dolor sit amet.</p>
+
+            <div class="w3-row">
+                <a href="javascript:void(0)">
+                    <div class="w3-col l3 m3 s3 w3-bottombar w3-hover-light-gray w3-padding">
+                        Lorem 1
+                    </div>
+                </a>
+                <a href="javascript:void(0)">
+                    <div class="w3-col l3 m3 s3 w3-bottombar w3-hover-light-gray w3-padding">
+                        Lorem 2
+                    </div>
+                </a>
+                <a href="javascript:void(0)">
+                    <div class="w3-col l3 m3 s3 w3-bottombar w3-hover-light-gray w3-padding">
+                        Lorem 3
+                    </div>
+                </a>
+                <a href="javascript:void(0)">
+                    <div class="w3-col l3 m3 s3 w3-bottombar w3-hover-light-gray w3-padding">
+                        Lorem 4
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="w3-margin-bottom w3-white">
+            <form class="w3-form">
+                <h4>Person 1</h4>
+                <label>Fullnames <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border neat-format" type="text" title="Name" style="text-transform: capitalize">
+
+                <label>Age <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Relationship <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Sex <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Tribe/Nationality <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Religion<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Marital Status<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Birthplace<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Previous Residence<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Duration of Residence<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Orphanhood<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+
+            </form>
+        </div>
+<!--*******************************************************************************-->
+
+        <div class="w3-margin-bottom w3-white">
+            <form class="w3-form">
+                <h4>Information Regarding Females</h4>
+                <label>Ever given birth?<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border neat-format" type="text" title="Name" style="text-transform: capitalize">
+
+                <label>Children born alive <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Children Living in Household <span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Children Living Elsewhere<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Children dead<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Last child born<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+                <label>Sex of the child<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>Health status of the lastborn<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="text" title="Name">
+
+            </form>
+        </div>
+
+        <!--*******************************************************************************-->
+
+        <div class="w3-margin-bottom w3-white">
+            <form class="w3-form">
+                <h4>Desability concerns</h4>
+                <label>Any disability in the family?<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border neat-format" type="text" title="Name" style="text-transform: capitalize">
+
+                <label>Type of disability<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>More info regarding disabilities<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+            </form>
+        </div>
+
+        <!--*******************************************************************************-->
+
+        <div class="w3-margin-bottom w3-white">
+            <form class="w3-form">
+                <h4>Eduation</h4>
+                <label>Any disability in the family?<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border neat-format" type="text" title="Name" style="text-transform: capitalize">
+
+                <label>Type of disability<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+                <label>More info regarding disabilities<span class="w3-text-red">*</span></label>
+                <input class="w3-input w3-border" type="number" title="Name">
+
+            </form>
+        </div>
+
+
+        <div id="openHousehold" class="w3-modal">
+            <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 600px">
+                <div class="w3-center w3-pale-red w3-xxlarge neat-format">
+                    House hold number <span id="houseNo">347</span>
+                </div>
+                <div class="w3-padding-large">
+                    <label>Number of persons in the household</label>
+                    <input type="number" class="w3-input w3-border">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <aside class="w3-col l4 m4 w3-padding-medium">
+        <section class="w3-white w3-container w3-margin-bottom w3-row w3-padding">
+            <div class="w3-quarter" style="margin-top: 32px">
+                <i class="fa fa-user-circle-o fa-4x w3-text-gray"></i>
+            </div>
+            <div class="w3-threequarter">
+                <h3>Co-Worker's Name</h3>
+                <p class="">ID: 32436932</p>
+                <button class="w3-btn w3-red">Logout</button>
+            </div>
+        </section>
+
+        <section class="w3-white w3-container w3-margin-bottom">
+            <h4>Other Services</h4>
+            <ul class="w3-ul">
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+            </ul>
+        </section>
+
+        <section class="w3-white w3-container w3-margin-bottom">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores inventore perspiciatis repellat! Ab
+                accusamus adipisci aspernatur atque beatae cumque doloribus enim error itaque nam nobis obcaecati,
+                saepe, vero, voluptas voluptatibus!</p>
+        </section>
+    </aside>
+</div>
+
+</body>
+<script type="text/javascript" src="../scripts/main.js"></script>
+<script>
+    document.getElementById('id01').style.display='block';
+</script>
+</html>

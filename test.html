@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/W3Schools/w3.css" rel="stylesheet">
+
+    <style>
+        body,html {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #AAA;
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        #sec-3 .w3-third{
+            position: relative;
+            display: table-cell;
+            height: 100%;
+            color: #fff;
+            font-size: 3em;
+            overflow: hidden;
+        }
+        header  div{
+            position: relative;
+            display: block;
+            height: 100%;
+            color: #fff;
+            font-size: 3em;
+            overflow: hidden;
+        }
+        #sec-3 .w3-third::before{
+            position: absolute;
+            display: block;
+            content: "";
+            color: #000;
+            font-size: 1em;
+            bottom: -10em;
+            left: 0;
+            width: 100%;
+            height: 75%;
+            background: no-repeat center center;
+            background-size: cover;
+            opacity: 0;
+            transition: bottom 1s, opacity .5s;
+        }
+        #sec-3 .w3-third::before{
+            position: absolute;
+            display: block;
+            content: "";
+            color: #000;
+            font-size: 1em;
+            bottom: -10em;
+            left: 0;
+            width: 100%;
+            height: 75%;
+            background: no-repeat center center;
+            background-size: cover;
+            opacity: 0;
+            transition: bottom 1s, opacity .5s;
+        }
+        #sec-3 .w3-third:hover{
+            background: #fff;
+            color: #000;
+        }
+        #sec-3 .w3-third:hover::before{
+            opacity: 1;
+            bottom: 0;
+        }
+        #sec-3 .w3-third:nth-child(1)::before{
+            background-image: url("images/art-beads-bracelet-271607.jpg");
+        }
+        #sec-3 .w3-third:nth-child(2)::before{
+            background-image: url("images/art-beads-bracelet-271607.jpg");
+        }
+        #sec-3 .w3-third:nth-child(3)::before{
+            background-image: url("images/art-beads-bracelet-271607.jpg");
+        }
+        #sec-3 .w3-third > span{
+            position: absolute;
+            display: block;
+            top: 50%;
+            transition: top 1s;
+            transition-delay: .25s;
+        }
+        #sec-3 .w3-third:hover > span{
+            top: 10%;
+        }
+
+
+    </style>
+
+
+    <script src="css/JQuery/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+<h1>Lorem ipsum dolor.</h1>
+<nav>
+    <a href="#"><span>One</span></a>
+    <a href="#"><span>Two</span></a>
+    <a href="#"><span>Three</span></a>
+</nav>
+<br>
+<br>
+<h1>Lorem ipsum dolor.</h1>
+<br>
+<header class="w3-row w3-red" style="width: 100%; height: 100%">
+    <div class="w3-third"><a href="#"><span>One</span></a></div>
+    <div class="w3-third w3-border w3-border-black"><a href="#"><span>Two</span></a></div>
+    <div class="w3-third"><a href="#"><span>Three</span></a></div>
+</header>
+</body>
+</html>

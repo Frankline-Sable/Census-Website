@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+
+            <style>
+                body,html {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background: #000;
+                    padding: 0;
+                    margin: 0;
+                }
+                nav{
+                    display: table;
+                    height: 100%;
+                    width: 100%;
+                }
+
+                nav a{
+                    position: relative;
+                    display: table-cell;
+                    height: 100%;
+                    color: #fff;
+                    font-size: 3em;
+                    overflow: hidden;
+                }
+                nav a::before{
+                    position: absolute;
+                    display: block;
+                    content: "";
+                    color: #000;
+                    font-size: 1em;
+                    bottom: -10em;
+                    left: 0;
+                    width: 100%;
+                    height: 75%;
+                    background: no-repeat center center;
+                    background-size: cover;
+                    opacity: 0;
+                    transition: bottom 1s, opacity .5s;
+                }
+                nav a:hover{
+                    background: #fff;
+                    color: #000;
+                }
+                nav a:hover::before{
+                    opacity: 1;
+                    bottom: 0;
+                }
+                nav a:nth-child(1)::before{
+                    background-image: url("images/grunge_B&W");
+                }
+                nav a:nth-child(2)::before{
+                    background-image: url("images/grunge_B&W");
+                }
+                nav a:nth-child(3)::before{
+                    background-image: url("images/grunge_B&W");
+                }
+                nav a > span{
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    transition: top 1s;
+                    transition-delay: .25s;
+                }
+                nav a:hover > span{
+                    top: 10%;
+                }
+
+
+            </style>
+            <script src="css/JQuery/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+
+        </head>
+<body>
+<h1>Lorem ipsum dolor.</h1>
+<nav>
+    <a href=”#”><span>One</span></a>
+    <a href=”#”><span>Two</span></a>
+    <a href=”#”><span>Three</span></a>
+</nav>
+</body>
+
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="../css/JQuery/jquery-3.3.1.min.js"></script>
+
+    <link href="../css/W3Schools/w3.css" rel="stylesheet">
+    <link href="../css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/anim.css" rel="stylesheet">
+
+    <script href="../css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script src="../scripts/_Form_Scripts.js"></script>
+
+    <style>
+        table {
+            counter-reset: section;
+            counter-set: initial;
+        }
+
+        tr > td:nth-child(1)::before {
+            counter-increment: section;
+            content: "" counter(section) ": ";
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="w3-container">
+    <h2 class="" style="background-color: rgba(121,85,72,0.49)">Review the data you have entered</h2>
+    <h4>Citizens </h4>
+    <div id="res-1" class="w3-responsive">
+
+    </div>
+    <br>
+    <h4>Emigtanys </h4>
+    <div id="res-2" class="w3-responsive">
+
+    </div>
+
+    <br>
+    <h4>ict</h4>
+    <div id="res-5" class="w3-responsive">
+
+    </div>
+    <br>
+    <h4>ict</h4>
+    <div id="res-6" class="w3-responsive">
+
+    </div>
+
+
+    <br>
+    <h4>Death </h4>
+    <div id="res-4" class="w3-responsive">
+
+    </div>
+
+
+    <br>
+    <h4>Dwkkings </h4>
+    <div id="res-3" class="w3-responsive">
+    </div>
+
+    <br>
+    <h4>Dwkkings </h4>
+    <div id="res-7" class="w3-responsive">
+    </div>
+</section>
+
+
+</body>
+</html>
+<script>
+
+    _init_DataFetch("../Phps/_Get_Citizens.php", _data_Fetch_1);
+    _init_DataFetch("../Phps/_Get_Emigrants.php", _data_Fetch_2);
+    _init_DataFetch("../Phps/_Get_ict.php", _data_Fetch_3);
+    _init_DataFetch("../Phps/_Get_Livestock.php", _data_Fetch_4);
+    _init_DataFetch("../Phps/_Get_Deaths.php", _data_Fetch_5);
+    _init_DataFetch("../Phps/_Get_Dwellings.php", _data_Fetch_6);
+    _init_DataFetch("../Phps/_Get_Females.php", _data_Fetch_7);
+
+    function _init_DataFetch(_url, _funcX) {
+
+        let xHttp;
+
+        xHttp = new XMLHttpRequest();
+        xHttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                _funcX(this.responseText);
+            }
+        };
+
+        xHttp.open("GET", _url, true);
+        xHttp.send();
+    }
+
+    function _data_Fetch_1(dat) {
+        var arr = (JSON.parse(dat))._dcitizens;
+        var i, out = "", x;
+        x = document.getElementById("res-1");
+
+        out = '<div class="w3-padding-4">' + arr.length + ' People in the Household</div>' +
+            '<table class="w3-table-all w3-bordered">\n' +
+            '<tr>' +
+            '<th>No:</th>' +
+            '<th>FullNames</th> ' +
+            '<th>DOB</th> ' +
+            '<th>Relation..</th> ' +
+            '<th>Gender</th> ' +
+            '<th>Tribe</th> ' +
+            '<th>Religion</th> ' +
+            '<th>Mar..Status</th>' +
+            ' <th>BirthPlace</th> ' +
+            '<th>Prev..Res</th> ' +
+            '<th>Cur..Res</th> ' +
+            '<th>Dur.. Res</th> ' +
+            '<th>OrphanHood</th> ' +
+            '<th>Disability</th> ' +
+            '<th>Type..Disab..</th>' +
+            '<th>More..Disab..</th>' +
+            '<th>School</th> ' +
+            '<th>High..Level</th> ' +
+            '<th>Level..Comp</th> ' +
+            '<th>Act..LastWk</th> ' +
+            '<th>Employer</th> ' +
+            '<th>Hours..Work<th>' +
+            '</tr>\n';
+
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td>' + arr[i].FullNames + '</td>' +
+                '<td>' + arr[i].DOB + '</td>' +
+                '<td>' + arr[i].RelationShip + '</td>' +
+                '<td>' + arr[i].Sex + '</td>' +
+                '<td>' + arr[i].Tribe + '</td>' +
+                '<td>' + arr[i].Religion + '</td>' +
+                '<td>' + arr[i].Marital_St + '</td>' +
+                '<td>' + arr[i].BithPlace + '</td>' +
+                '<td>' + arr[i].Prev_Res + '</td>' +
+                '<td>' + arr[i].Curr_Res + '</td>' +
+                '<td>' + arr[i].Dur_Res + '</td>' +
+                '<td>' + arr[i].OrphanHood + '</td>' +
+                '<td>' + arr[i].Disabilty + '</td>' +
+                '<td>' + arr[i].TypeDisability + '</td>' +
+                '<td>' + arr[i].MoreDisability + '</td>' +
+                '<td>' + arr[i].School + '</td>' +
+                '<td>' + arr[i].Highest_Level + '</td>' +
+                '<td>' + arr[i].LevelComp + '</td>' +
+                '<td>' + arr[i].ActivityLastWeek + '</td>' +
+                '<td>' + arr[i].Employer + '</td>' +
+                '<td>' + arr[i].HoursWork + '</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_2(dat) {
+
+        var arr = (JSON.parse(dat))._demigrants;
+        var i, out = "", x;
+        x = document.getElementById("res-2");
+
+        out = '<div class="w3-padding-4">' + arr.length + ' Emigrants in the Household</div>' +
+            '<table class="w3-table-all">\n' +
+            '<tr>' +
+            '<th>No:</th> ' +
+            '<th>Respondent</th> ' +
+            '<th>FullNames</th> ' +
+            '<th>Sex</th> ' +
+            '<th>Dob</th> ' +
+            '<th>High..Edu.</th> ' +
+            '<th>Destination</th> ' +
+            '<th>Cur...Res</th> ' +
+            '<th>Dept...Year</th> ' +
+            '<th>Status</th> ' +
+            '<th>Sen...Remi</th> ' +
+            '<th>Amount..Remi</th> ' +
+            '<th>Remi...Use</th>' +
+            '</tr>\n';
+
+        for (i = 0; i < arr.length; i++) {
+
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td>' + arr[i].Respondent + '</td>' +
+                '<td>' + arr[i].FullNames + '</td>' +
+                '<td>' + arr[i].Sex + '</td>' +
+                '<td>' + arr[i].Dob + '</td>' +
+                '<td>' + arr[i].HighestEdu + '</td>' +
+                '<td>' + arr[i].Destination + '</td>' +
+                '<td>' + arr[i].Curr_Res + '</td>' +
+                '<td>' + arr[i].Dept_Year + '</td>' +
+                '<td>' + arr[i].Status + '</td>' +
+                '<td>' + arr[i].Sent_Rem + '</td>' +
+                '<td>' + arr[i].Amount_Rem + '</td>' +
+                '<td>' + arr[i].How_Rem + '</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_3(dat) {
+
+        var arr = (JSON.parse(dat))._dict;
+        var i, out = "", x;
+
+        x = document.getElementById("res-5");
+
+        out = '<div class="w3-padding-4"> Something to Say</div>' +
+            '<table class="w3-table-all">' +
+            '<tr>' +
+            '<th>No:</th> ' +
+            '<th>accessibility</th> ' +
+            '<th>Frequency</th> ' +
+            '<th>Place of Access</th>' +
+            '</tr>';
+
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td> ' + arr[i].Accessibility + '</td>' +
+                '<td> ' + arr[i].Frequency + '</td>' +
+                '<td> ' + arr[i].PlaceFAccess + '</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_4(dat) {
+
+        var arr = (JSON.parse(dat))._dlvs;
+        var i, out = "", x;
+        x = document.getElementById("res-6");
+
+        out = '<div class=""></div>' +
+            '<table class="w3-table-all">' +
+            '<tr>' +
+            '<th>No:</th> ' +
+            '<th>Livestock</th> ' +
+            '</tr>';
+
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td> ' + arr[i].Livestock + '</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_5(dat) {
+        var arr = (JSON.parse(dat))._ddeaths;
+        var i, out = "", x;
+        x = document.getElementById("res-4");
+
+        out = '<div class=""></div> ' +
+            '<table class="w3-table-all">' +
+            '<tr>' +
+            '<th>No:</th> ' +
+            '<th>Dec_Relation</th> ' +
+            '<th>Death_Note</th> ' +
+            '<th>Age</th> ' +
+            '<th>Sex</th> ' +
+            '<th>Cause</th> ' +
+            '</tr>';
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td> ' + arr[i].Dec_Relation + '</td>' +
+                '<td> ' + arr[i].Death_Note + '</td>' +
+                '<td> ' + arr[i].Age + '</td>' +
+                '<td> ' + arr[i].Sex + '</td>' +
+                '<td> ' + arr[i].Causearr + '</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_6(dat) {
+        var arr = (JSON.parse(dat))._ddw;
+        var i, out = "", x;
+        x = document.getElementById("res-3");
+
+        out = '<div class=""></div> ' +
+            '<table class="w3-table-all">\n' +
+            '<tr>' +
+            '<th>No</th> ' +
+            '<th>Dwelling Units</th> ' +
+            '<th>Habitable Rooms</th> ' +
+            '<th>Tenure status</th> ' +
+            '<th>Roof Material</th> ' +
+            '<th>Wall Material</th> ' +
+            '<th>Floor Material</th> ' +
+            '<th>Water Source</th> ' +
+            '<th>Cook Fuel</th> ' +
+            '<th>Light Fuel</th> ' +
+            '<th>HumanWasteDisp<th>' +
+            '</tr>';
+
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td> ' + arr[i].DwellingUnits + '</td>' +
+                '<td> ' + arr[i].HabitableRooms + '</td>' +
+                '<td> ' + arr[i].Tenurestatus + '</td>' +
+                '<td> ' + arr[i].RoofMaterial + '</td>' +
+                '<td> ' + arr[i].WallMaterial + '</td>' +
+                '<td> ' + arr[i].FloorMaterial + '</td>' +
+                '<td> ' + arr[i].WaterSource + '</td>' +
+                '<td> ' + arr[i].CookFuel + '</td>' +
+                '<td> ' + arr[i].LightFuel + '</td>' +
+                '<td> ' + arr[i].HumanWasteDisparr + '\n</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+
+    function _data_Fetch_7(dat) {
+        var arr = (JSON.parse(dat))._dfem;
+        var i, out = "", x;
+        x = document.getElementById("res-7");
+
+        out = '<div class=""></div> ' +
+            '<table class="w3-table-all">\n' +
+            '<tr>' +
+            '<th>No</th> ' +
+            '<th>Live_Births</th> ' +
+            '<th>Children_Alive</th> ' +
+            '<th>Children_HH</th> ' +
+            '<th>Children_ElseWhere</th> ' +
+            '<th>Dead_Child</th> ' +
+            '<th>Last_Born_Date</th> ' +
+            '<th>LB_Notified</th> ' +
+            '<th>LB_Sex</th> ' +
+            '<th>LB_Survival_Stats</th> ' +
+            '</tr>';
+
+        for (i = 0; i < arr.length; i++) {
+            out +=
+                '<tr>' +
+                '<td class=""></td>' +
+                '<td> ' + arr[i].Live_Births + '</td>' +
+                '<td> ' + arr[i].Children_Alive + '</td>' +
+                '<td> ' + arr[i].Children_HH + '</td>' +
+                '<td> ' + arr[i].Children_ElseWhere + '</td>' +
+                '<td> ' + arr[i].Dead_Child + '</td>' +
+                '<td> ' + arr[i].Last_Born_Date + '</td>' +
+                '<td> ' + arr[i].LB_Notified + '</td>' +
+                '<td> ' + arr[i].LB_Sex + '</td>' +
+                '<td> ' + arr[i].LB_Survival_Stats + '\n</td>' +
+                '</tr>';
+        }
+        out += '</table>';
+        x.innerHTML = out;
+    }
+</script>

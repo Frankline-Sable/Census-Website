@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="../css/JQuery/jquery-3.3.1.min.js"></script>
+
+    <link href="../css/W3Schools/w3.css" rel="stylesheet">
+    <link href="../css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/anim.css" rel="stylesheet">
+
+    <script href="../css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <title>Inquiry Desk</title>
+
+    <style>
+        @font-face {
+            font-family: "Goth";
+            src: url('../Fonts/Gotham Book.ttf');
+        }
+
+        body, hhtml {
+            font-family: goth, serif;
+			background: linear-gradient(to right, #66ccff 0%, #ffffff 100%);
+			background-color: rgba(228, 228, 228, 0.78);
+			background-image: url('../images/grunge_B&W.jpg');
+			background-blend-mode: soft-light;
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+        }
+
+        #header {
+            background: radial-gradient(50% 176%, #253854 80%, #061922 100%);
+            background: rgba(0, 0, 2, 0.54);
+            background-image: url("../images/fading.jpg");
+            background-blend-mode: soft-light;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            background-position: center;
+            background-size: cover;
+            min-height: 60%;
+            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.66);
+
+        }
+
+        .at_a {
+            background-image: url("../images/image_a.png");
+            background-attachment: fixed;
+            background-repeat: space;
+            background-origin: border-box;
+            background-position: left;
+            background-size: cfover;
+            height: 300px;
+			background-repeat: no-repeat;
+            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.66);
+        }
+
+        .at_b {
+            background-image: url("../images/image_b.png");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            background-position: right;
+            background-size: auto;
+            height: 440px;
+            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.66);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="" id="nav">
+    <ul class="menu-topnav w3-navbar w3-large w3-text-white w3-hide-small"
+        style="" id="menu-topnav">
+        <li class=""><a href=""><span>WORK</span></a></li>
+        <li class=""><a href=""><span>ABOUT</span></a></li>
+        <li class=""><a href=""><span>PROCESS</span></a></li>
+        <li class=""><a href=""><span>CONTACT</span></a></li>
+        <li class=""><a href="" class=""><span>BLOG</span></a></li>
+    </ul>
+    <div class="hamburger w3-hide-small" onclick="openTopNav(this);"
+         style="position: fixed; z-index: 3; right: 16px; top: 24px">
+        <div class="bar1 w3-white"></div>
+        <div class="bar2 w3-white"></div>
+        <div class="bar3 w3-white"></div>
+    </div>
+
+    <div class="hamburger  w3-hide-large w3-hide-medium" onclick="openFullNav(this);"
+         style="position: fixed; z-index: 3; right: 16px; top: 24px">
+        <div class="bar1 w3-white"></div>
+        <div class="bar2 w3-white"></div>
+        <div class="bar3 w3-white"></div>
+    </div>
+
+    <div class="w3-wide showLogo w3-xxlarge w3-padding w3-round  w3-text-white w3-text-shadow w3-margin-top"
+         id="logo"
+         style="font-weight: 700;z-index: 3;position: fixed; background-color: rgba(41, 171, 135,0);">
+        Census <i class="fa fa-exclamation-circle"></i>
+    </div>
+
+
+    <!-- The overlay Fullscreen Navigation-->
+    <div id="fullscreenNav" class="overlay w3-hide-mediufm w3-hideflarge">
+        <!-- Overlay content -->
+        <div class="overlay-content w3-text-white">
+            <ul class="">
+                <li class=""><a href="#">Home</a></li>
+                <li class=""><a href="#">What’s On</a></li>
+                <li class=""><a href="#">Our Venues</a></li>
+                <li class=""><a href="#">Your Visit</a></li>
+                <li class=""><a href="#">Hire</a></li>
+                <li class=""><a href="#">About Us</a></li>
+                <li class=""><a href="#">How to book</a></li>
+                <li class=""><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <aside id="accountSideNav" class="sidenav  w3-round-large w3-text-light-grey">
+
+        <div>
+                <span style="font-weight: 200; cursor: pointer;" class="w3-xxxlarge w3-hover-opacity"
+                      onclick="openSideNav();">&times; <span
+                        class="w3-large">Exit</span> </span>
+        </div>
+        <div id="sideNav1" class="w3-show">
+            <h2 class="capitalize w3-text-red  w3-xxlarge w3-text-shadow w3-padding-16 w3-center"
+                style="font-weight: 900">census
+                <span class="w3-xxxlarge">staff</span> login</h2>
+            <div class="w3-center">
+                <i class="fa fa-user-circle-o fa-4x" style="font-size: 92px"></i>
+            </div>
+            <form class="w3-container" action="javascript:userLogin('lgForm');" name="lgForm">
+                <div class="w3-section">
+                    <div style="margin: auto 48px auto 48px">
+                        <label style="font-weight:600">Username</label>
+                        <input class="w3-input w3-margin-bottom" type="text" placeholder="Enter Username"
+                               name="userName" required>
+                        <label style="font-weight:600">Password</label>
+                        <input class="w3-input " type="password" placeholder="Enter Password" name="psw" required>
+                    </div>
+                    <button class="w3-btn-block  w3-section w3-padding w3-border-white w3-transparent w3-border w3-hover-opacity"
+                            type="submit">Login
+                    </button>
+                    <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+                </div>
+            </form>
+            <div class="w3-container w3-border-top w3-padding-8">
+
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
+        </div>
+
+        <section class="w3-center w3-display-container w3-margin-bottom w3-hide" id="sideNav2">
+            <div class="w3-padding-xxlarge">
+                <i class="fa fa-home fa-4x" style="font-size: 48px"> House Placements</i>
+            </div>
+
+            <section id="usrDatCtn">
+
+            </section>
+            <!--
+            <div class="w3-row-padding w3-padding-xlarge" id="usfrDatCtn">
+                <div class="w3-third w3-left-align">
+                    <ul>
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">ipsum</a></li>
+                        <li><a href="#">dolor</a></li>
+                        <li><a href="#">sit</a></li>
+                        <li><a href="#">amet.</a></li>
+                    </ul>
+                </div>
+
+                <div class="w3-third w3-left-align ">
+                    <ul class="w3-border-left">
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">ipsum</a></li>
+                        <li><a href="#">dolor</a></li>
+                        <li><a href="#">sit</a></li>
+                        <li><a href="#">amet.</a></li>
+                    </ul>
+                </div>
+
+                <div class="w3-third w3-left-align w3-display-right">
+                    <div class="w3-dark-gjray">
+                        <img src="images/test.jpg" alt="Merch" width="128px" height="128px" style="border-style: inset">
+                    </div>
+                </div>
+            </div>
+-->
+            <div class="w3-display-bottom">
+                <a href="Page/UserPage.html">
+
+                    <button class="w3-btn-block w3-red w3-left-align w3-center w3-padding-medium w3-hover-opacity">
+                        Household registration
+                    </button>
+                </a>
+
+            </div>
+
+            <div class="w3-display-topright w3-padding w3-large w3-card-12">
+                <a href="" class="fa fa-sign-out w3-hover-text-dark-gray w3-text-green"><br>Sign out</a>
+            </div>
+        </section>
+    </aside>
+
+</nav>
+
+<header class="hero w3-display-container defaultHeader" id="header">
+
+    <div class="w3-display-bottommiddle w3-padding" style="top: 70%">
+        <img src="../images/inquire.png" alt="" class="w3-circle w3-light-gray" style="padding: 8px; " width="192px">
+    </div>
+
+    <div class="w3-display-middle w3-text-white">
+
+
+        <img src="../images/Ask Question_64px.png">
+        <h1 class="w3-xxxlarge">Have Some <span class="w3-text-shadow-white w3-text-blue">Questions</span>?</h1>
+        <img src="../images/Ask Question_52px.png" class="w3-right">
+
+
+    </div>
+</header>
+
+<main style="margin-top: 64px; ">
+    <section class="w3-row-padding">
+        <article class="w3-col l4 m4 s12 at_a w3-large w3-text-red">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia optio sunt cum hic beatae tempora cupiditate,
+            alias vel adipisci incidunt itaque mollitia, ducimus minima harum perferendis et necessitatibus magni
+            laborum.
+        </article>
+        <article class="w3-col l4 m4 s12 w3-center w3-hide-small">
+            <img src="../images/inq.png" width="172px" class="" style="margin-top: 128px">
+        </article>
+        <article class="w3-col l4 m4 s12 w3-xlarge">
+            <div >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+                optio sunt cum hic beatae tempora cupiditate,
+                alias vel adipisci incidunt itaque mollitia, ducimus minima harum perferendis et necessitatibus magni
+                laborum.
+            </div>
+        </article>
+    </section>
+	
+	<section class="w3-white" style="margin: auto 128px auto 128px;">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, nam tempora et error, voluptatibus est soluta? Deserunt, quibusdam culpa optio, asperiores aliquid sapiente. Unde possimus aperiam exercitationem inventore deleniti, praesentium maiores natus? Incidunt sunt maiores nulla, porro, eum quaerat laborum natus nisi perspiciatis modi. Est placeat quas vitae fugit delectus magnam rem temporibus modi eum odio excepturi consequatur qui porro molestias, quibusdam earum vel alias sit iure itaque quae, iusto cupiditate! Quae dolorem laudantium ea ducimus recusandae, blanditiis quis nostrum a tempora. Est praesentium esse atque ea sunt corrupti facilis numquam inventore enim iste consectetur, itaque quis repudiandae, quaerat cumque sapiente rem tempora reiciendis quod natus molestiae ipsum pariatur, laudantium vel dolor. Ipsam cumque saepe molestiae necessitatibus itaque dolorum cum, veritatis, aut beatae libero quasi quaerat. Vero, animi quaerat quas, voluptas provident expedita, odio eveniet ipsam assumenda optio dicta nesciunt maxime iure dignissimos! Cum deserunt iure pariatur atque culpa quas natus expedita sed laudantium magni unde sint temporibus, velit rerum beatae iusto molestiae, consequatur ullam obcaecati aliquid, quidem non nemo facere placeat ipsum. Enim assumenda dolore, reiciendis perferendis mollitia officiis repellendus velit alias ab accusantium. Maxime reiciendis quisquam, culpa magni. Alias accusantium ad enim doloribus assumenda consequuntur minima earum, ducimus delectus recusandae dolores atque sed quo culpa sint iure commodi minus natus quam. Sunt iure excepturi officia ut repellat quas reiciendis ipsa quo, maiores, voluptatibus ratione architecto qui quaerat. Voluptates doloremque, illum quibusdam odio! Mollitia minus eaque, explicabo non neque ratione consequatur aliquid eligendi, ipsam placeat nesciunt facere iste asperiores a suscipit maiores autem, quasi deserunt, nostrum sequi quo quis? Quisquam nesciunt rem, praesentium voluptatum quam ipsa maiores ut officia tempora libero sapiente iusto alias quia esse atque illo animi quis, obcaecati incidunt molestiae repudiandae! Vitae, eum error, suscipit, laudantium quis quisquam saepe beatae nemo cupiditate assumenda deleniti tempora neque possimus alias doloremque aperiam sint iure. Earum, accusantium. Voluptates enim quibusdam eveniet vel facilis. Animi, distinctio culpa voluptate, totam sed illo explicabo numquam impedit aspernatur voluptatibus, dolore rem esse iure. Reprehenderit perferendis vel deserunt, harum magni impedit blanditiis explicabo ipsum nostrum maiores voluptate quae? Fuga, maiores, temporibus. Voluptates fuga fugit aspernatur deleniti, incidunt veritatis nulla iure recusandae tempora officiis quo ex mollitia accusamus ratione sint ipsam totam, dolores voluptas modi nisi optio beatae! Ratione optio culpa dolorem consequuntur nam, numquam laborum, facere quae dolores cumque dolor reiciendis blanditiis, quas at! Doloribus quidem laudantium optio eum et, quibusdam illum fuga in, omnis sunt ullam, est quo, architecto! Harum ut eveniet reiciendis eaque, praesentium in tenetur consequuntur eius eligendi illo quod commodi tempore facere nihil quae molestias accusantium rerum? At sunt illum voluptatibus explicabo architecto animi magnam iusto quae quas quia pariatur, rerum officia obcaecati dolore officiis ad, voluptate dignissimos corporis ratione cumque amet impedit soluta ut. Quisquam iusto odit, corporis dolores dolore expedita aperiam eum quas sint, voluptatibus ut. Nulla deserunt eos voluptate. Ad reprehenderit deleniti aperiam nulla iusto temporibus quas aut quod soluta ipsam perferendis doloremque atque, consectetur adipisci explicabo, earum tempore, maiores. Quidem, tempore dolore et repellat quaerat laudantium.</p>
+	</section>
+</main>
+</body>
+</html>
+
+<script type="text/javascript" src="../scripts/main.js"></script>
